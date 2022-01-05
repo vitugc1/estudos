@@ -1,0 +1,30 @@
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #29292e;
+}
+
+Input {
+    width: 400px;
+    margin-top: 1rem;
+    border: 1px solid blue;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    width: 50px;
+    margin-top: 1rem;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
