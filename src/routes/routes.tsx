@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 
-import { FormList } from "../components/formList/formList";
-import { HooksList } from '../components/hooksList/hooksList';
-import { ContextList } from '../components/contextList/contextList';
+import { CepList } from '../pages/cepList/cepList';
+import { Home } from "../pages/home/home";
+import { Pokemon } from '../pages/pokemon/pokemon';
 
 export const Routes: React.FC = () => {
     return (
         <Switch>
-            <Route path="/" exact component={FormList} />
-            <Route path="/hooks" exact component={HooksList} />
-            <Route path="/context" exact component={ContextList} />
+            <Route path="/" exact component={Home} />
+            <Route path="/cep" exact component={CepList} />
+            <Route path="/pokemon" exact component={Pokemon} />
         </Switch>
     )
 }
