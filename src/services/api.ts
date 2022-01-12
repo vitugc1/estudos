@@ -18,7 +18,7 @@ export const listApis = () => {
     })
 
     const weatherApi = axios.create({
-        baseURL: '',
+        baseURL: 'https://api.openweathermap.org/data/2.5/',
     })
 
 
