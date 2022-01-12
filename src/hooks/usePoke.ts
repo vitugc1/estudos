@@ -1,26 +1,19 @@
-import { useState, useEffect } from 'react';
-import { listApis } from '../services/api';
+import useSWR from 'swr';
+import { listApis } from './../services/api';
 
-type PokeListType = {
-    id: string;
-    name: string;
-    url: string;
-}
-
-export const usePoke = () => {
-    const [pokeList, setPokeList] = useState<PokeListType[]>();
+export function usePoke<Data>(url: string){
     const { pokeApi } = listApis();
 
-    useEffect(() => {
-        pokeApi.get("/ability/65/").then(reponse => {
-            setPokeList(reponse.data.results);
-        });
-    
+    const { data, error } = useSWR<Data>(url, url => {
+        const response = pokeApi.get(url).then(res => res.data);
 
-    }, []);
+        return response;
+    });
 
-    return {pokeList};
+    return { data, error };
 }
+
+
 
 
 

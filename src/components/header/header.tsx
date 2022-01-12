@@ -17,6 +17,9 @@ export const Header: React.FC = () => {
                 <li>
                     <Link to="/pokemon">Pokemon</Link>
                 </li>
+                <li>
+                    <Link to="/nasa">Nasa</Link>
+                </li>
             </ul>
         </div>
     )

@@ -2,21 +2,35 @@ import React from 'react'
 import { Header } from '../../components/header/header';
 import { usePoke } from '../../hooks/usePoke';
 
-export const Pokemon: React.FC = () => {
-    const { pokeList } = usePoke();
+interface PokeListType {
+    id: number;
+    name: string;
+    sprites: {
+        front_default: string;
+        front_shiny: string;
+        back_shiny: string;
+    }
+}
 
-    console.log(pokeList?.map(p => p.name));
+export const Pokemon: React.FC = () => {
+    const { data } = usePoke<PokeListType>("/pokemon/1/");
+
+    if(!data) {
+        return <p>Loading...</p>
+    }
+
+    console.log(data);
     return (
         <div>
             <Header />
-            {pokeList?.map(item =>(
-                <ul 
-                    key={item.id}
-                >
-                    <li>{item.name}</li>
-                </ul>
-                
-            ))}
+
+            <ul>
+                <li>{data?.name}</li>
+                <img src={data?.sprites.front_default} alt="" />
+                <img src={data?.sprites.back_shiny} alt="" />
+                <img src={data?.sprites.front_shiny} alt="" />
+            </ul>
+            
         </div>
     )
 }

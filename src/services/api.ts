@@ -14,7 +14,7 @@ export const listApis = () => {
     })
 
     const nasaApi = axios.create({
-        baseURL: '',
+        baseURL: 'https://api.nasa.gov/',
     })
 
     const weatherApi = axios.create({
