@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
 import { Form } from "@unform/web";
 import { FormHandles, Scope, SubmitHandler } from "@unform/core";
-import { Input } from "../form/input";
 
-import { useEffect, useRef } from "react";
+import { Input } from "../form/input";
 
 interface FormData {
   name: string;

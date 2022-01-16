@@ -6,6 +6,8 @@ import { useSwFilmes } from '../../hooks/useSwFilmes';
 export const Home: React.FC = () => {
     const { listFilmes } = useSwFilmes()
 
+    console.log(listFilmes)
+
     return (
         <div>
             <Header />

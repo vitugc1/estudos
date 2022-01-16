@@ -7,6 +7,7 @@ export const Header: React.FC = () => {
     return (
         <div className="header">
             <div></div>
+            
             <ul>
                 <li>
                     <Link to="/">Star Wars</Link>
@@ -15,7 +16,7 @@ export const Header: React.FC = () => {
                     <Link to="/cep">Cep</Link>
                 </li>
                 <li>
-                    <Link to="/pokemon">Pokemon</Link>
+                    <Link to="/poke">Pokemon</Link>
                 </li>
                 <li>
                     <Link to="/nasa">Nasa</Link>
@@ -24,6 +25,7 @@ export const Header: React.FC = () => {
                     <Link to="/time">time</Link>
                 </li>
             </ul>
+
         </div>
     )
 }

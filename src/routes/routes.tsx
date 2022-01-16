@@ -12,7 +12,7 @@ export const Routes: React.FC = () => {
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/cep" exact component={CepList} />
-            <Route path="/pokemon" exact component={Pokemon} />
+            <Route path="/poke" exact component={Pokemon} />
             <Route path="/nasa" exact component={Nasa} />
             <Route path="/time" exact component={Time} />
         </Switch>
