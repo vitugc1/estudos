@@ -1,34 +1,51 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 
 import { Header } from '../../components/header/header';
 import { usePoke } from '../../hooks/usePoke';
+import { listApis } from '../../services/api';
 
-interface PokeListType {
+
+interface PokeProps {
     name: string;
     url: string;
-    sprites: {
-        front_default: string;
-        front_shiny: string;
-        back_shiny: string;
-    }
 }
 
+interface PokedexInfoProps {
+    id: string;
+    name: string;
 
+}
 
 export const Pokemon: React.FC = () => {
-    const { data } = usePoke<PokeListType>(`/pokemon/5/`);
+    const { data } = usePoke<PokeProps[]>(`/pokemon/`);
+    const [pokemonInfo, setPokemonInfo] = useState<PokeProps | undefined>(undefined);
+    const [selectedPokemonInfo, setSelectedPokemonInfo] = useState<any | undefined>(undefined);
 
-    console.log(data);
+    const { pokeApi } = listApis();
+
+    const handlePokedexInfo = useCallback(() => {
+        pokeApi.get(`/pokemon/${pokemonInfo?.name}`).then(response => setSelectedPokemonInfo(response.data));
+    }, [pokemonInfo]);
+
+    useEffect(() => {
+        handlePokedexInfo();
+    }, [handlePokedexInfo]);
+
+
+    console.log(selectedPokemonInfo);
+
+    
     return (
         <div>
             <Header />
 
-            <div>
-                <h1>{data?.name}</h1>
-                <img src={data?.sprites.front_default} alt="pokemon" />
-                <img src={data?.sprites.front_shiny} alt="pokemon" />
-                <img src={data?.sprites.back_shiny} alt="pokemon" />
-            </div>
+            {data?.map((pokemon) => <button key={pokemon.name} onClick={() => setPokemonInfo(pokemon)}>{pokemon.name}</button>)}
+
+            <h2>pokemon selecionado: {pokemonInfo?.name}</h2>
+
+            {selectedPokemonInfo?.id}
+
         </div>
     )
 }
